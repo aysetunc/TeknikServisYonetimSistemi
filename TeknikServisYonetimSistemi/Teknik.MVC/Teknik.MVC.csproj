@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
-  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -43,11 +43,59 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -89,11 +137,161 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\animate.css" />
+    <Content Include="assets\css\bootstrap.css" />
+    <Content Include="assets\css\custom.css" />
+    <Content Include="assets\css\font-awesome.css" />
+    <Content Include="assets\css\nexus.css" />
+    <Content Include="assets\css\responsive.css" />
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\img\background.jpg" />
+    <Content Include="assets\img\blog\image1.jpg" />
+    <Content Include="assets\img\blog\image2.jpg" />
+    <Content Include="assets\img\blog\image3.jpg" />
+    <Content Include="assets\img\blog\image4.jpg" />
+    <Content Include="assets\img\blog\thumbs\thumb1.jpg" />
+    <Content Include="assets\img\blog\thumbs\thumb2.jpg" />
+    <Content Include="assets\img\blog\thumbs\thumb3.jpg" />
+    <Content Include="assets\img\blog\thumbs\thumb4.jpg" />
+    <Content Include="assets\img\fillers\aboutme.jpg" />
+    <Content Include="assets\img\fillers\filler1.jpg" />
+    <Content Include="assets\img\fillers\filler2.jpg" />
+    <Content Include="assets\img\fillers\filler3.jpg" />
+    <Content Include="assets\img\fillers\filler4.jpg" />
+    <Content Include="assets\img\frontpage\image1.jpg" />
+    <Content Include="assets\img\frontpage\image2.jpg" />
+    <Content Include="assets\img\frontpage\image3.jpg" />
+    <Content Include="assets\img\frontpage\image4.jpg" />
+    <Content Include="assets\img\frontpage\image5.jpg" />
+    <Content Include="assets\img\frontpage\image6.jpg" />
+    <Content Include="assets\img\hr.png" />
+    <Content Include="assets\img\ipads.jpg" />
+    <Content Include="assets\img\logo.png" />
+    <Content Include="assets\img\menu_arrow.png" />
+    <Content Include="assets\img\portfolio\image1.jpg" />
+    <Content Include="assets\img\portfolio\image10.jpg" />
+    <Content Include="assets\img\portfolio\image11.jpg" />
+    <Content Include="assets\img\portfolio\image12.jpg" />
+    <Content Include="assets\img\portfolio\image2.jpg" />
+    <Content Include="assets\img\portfolio\image3.jpg" />
+    <Content Include="assets\img\portfolio\image4.jpg" />
+    <Content Include="assets\img\portfolio\image5.jpg" />
+    <Content Include="assets\img\portfolio\image6.jpg" />
+    <Content Include="assets\img\portfolio\image7.jpg" />
+    <Content Include="assets\img\portfolio\image8.jpg" />
+    <Content Include="assets\img\portfolio\image9.jpg" />
+    <Content Include="assets\img\profiles\37.jpg" />
+    <Content Include="assets\img\profiles\53.jpg" />
+    <Content Include="assets\img\profiles\78.jpg" />
+    <Content Include="assets\img\profiles\84.jpg" />
+    <Content Include="assets\img\profiles\87.jpg" />
+    <Content Include="assets\img\profiles\99.jpg" />
+    <Content Include="assets\img\slideshow\slide1.jpg" />
+    <Content Include="assets\img\slideshow\slide2.jpg" />
+    <Content Include="assets\img\slideshow\slide3.jpg" />
+    <Content Include="assets\img\slideshow\slide4.jpg" />
+    <Content Include="assets\img\slimbox\closelabel.gif" />
+    <Content Include="assets\img\slimbox\loading.gif" />
+    <Content Include="assets\img\slimbox\nextlabel.gif" />
+    <Content Include="assets\img\slimbox\prevlabel.gif" />
+    <Content Include="assets\img\social_icons\aim.png" />
+    <Content Include="assets\img\social_icons\apple.png" />
+    <Content Include="assets\img\social_icons\behance.png" />
+    <Content Include="assets\img\social_icons\blogger.png" />
+    <Content Include="assets\img\social_icons\cargo.png" />
+    <Content Include="assets\img\social_icons\delicious.png" />
+    <Content Include="assets\img\social_icons\deviantart.png" />
+    <Content Include="assets\img\social_icons\digg.png" />
+    <Content Include="assets\img\social_icons\dopplr.png" />
+    <Content Include="assets\img\social_icons\dribbble.png" />
+    <Content Include="assets\img\social_icons\email.png" />
+    <Content Include="assets\img\social_icons\ember.png" />
+    <Content Include="assets\img\social_icons\evernote.png" />
+    <Content Include="assets\img\social_icons\facebook.png" />
+    <Content Include="assets\img\social_icons\flickr.png" />
+    <Content Include="assets\img\social_icons\forrst.png" />
+    <Content Include="assets\img\social_icons\github.png" />
+    <Content Include="assets\img\social_icons\google.png" />
+    <Content Include="assets\img\social_icons\googleplus.png" />
+    <Content Include="assets\img\social_icons\gowalla.png" />
+    <Content Include="assets\img\social_icons\grooveshark.png" />
+    <Content Include="assets\img\social_icons\html5.png" />
+    <Content Include="assets\img\social_icons\icloud.png" />
+    <Content Include="assets\img\social_icons\lastfm.png" />
+    <Content Include="assets\img\social_icons\linkedin.png" />
+    <Content Include="assets\img\social_icons\metacafe.png" />
+    <Content Include="assets\img\social_icons\mixx.png" />
+    <Content Include="assets\img\social_icons\myspace.png" />
+    <Content Include="assets\img\social_icons\netvibes.png" />
+    <Content Include="assets\img\social_icons\newsvine.png" />
+    <Content Include="assets\img\social_icons\orkut.png" />
+    <Content Include="assets\img\social_icons\paypal.png" />
+    <Content Include="assets\img\social_icons\picasa.png" />
+    <Content Include="assets\img\social_icons\pinterest.png" />
+    <Content Include="assets\img\social_icons\plurk.png" />
+    <Content Include="assets\img\social_icons\posterous.png" />
+    <Content Include="assets\img\social_icons\reddit.png" />
+    <Content Include="assets\img\social_icons\rss.png" />
+    <Content Include="assets\img\social_icons\skype.png" />
+    <Content Include="assets\img\social_icons\stumbleupon.png" />
+    <Content Include="assets\img\social_icons\technorati.png" />
+    <Content Include="assets\img\social_icons\tumblr.png" />
+    <Content Include="assets\img\social_icons\twitter.png" />
+    <Content Include="assets\img\social_icons\vimeo.png" />
+    <Content Include="assets\img\social_icons\wordpress.png" />
+    <Content Include="assets\img\social_icons\yahoo.png" />
+    <Content Include="assets\img\social_icons\yelp.png" />
+    <Content Include="assets\img\social_icons\youtube.png" />
+    <Content Include="assets\img\social_icons\zerply.png" />
+    <Content Include="assets\img\social_icons\zootool.png" />
+    <Content Include="assets\img\theteam\image1.jpg" />
+    <Content Include="assets\img\theteam\image2.jpg" />
+    <Content Include="assets\img\theteam\image3.jpg" />
+    <Content Include="assets\img\thumbsgallery\image01.jpg" />
+    <Content Include="assets\img\thumbsgallery\image02.jpg" />
+    <Content Include="assets\img\thumbsgallery\image03.jpg" />
+    <Content Include="assets\img\thumbsgallery\image04.jpg" />
+    <Content Include="assets\img\thumbsgallery\image05.jpg" />
+    <Content Include="assets\img\thumbsgallery\image06.jpg" />
+    <Content Include="assets\img\thumbsgallery\image07.jpg" />
+    <Content Include="assets\img\thumbsgallery\image08.jpg" />
+    <Content Include="assets\img\thumbsgallery\image09.jpg" />
+    <Content Include="assets\img\thumbsgallery\thumbs\image01.jpg" />
+    <Content Include="assets\img\thumbsgallery\thumbs\image02.jpg" />
+    <Content Include="assets\img\thumbsgallery\thumbs\image03.jpg" />
+    <Content Include="assets\img\thumbsgallery\thumbs\image04.jpg" />
+    <Content Include="assets\img\thumbsgallery\thumbs\image05.jpg" />
+    <Content Include="assets\img\thumbsgallery\thumbs\image06.jpg" />
+    <Content Include="assets\img\thumbsgallery\thumbs\image07.jpg" />
+    <Content Include="assets\img\thumbsgallery\thumbs\image08.jpg" />
+    <Content Include="assets\img\thumbsgallery\thumbs\image09.jpg" />
+    <Content Include="assets\img\typo\attach.png" />
+    <Content Include="assets\img\typo\clip.png" />
+    <Content Include="assets\img\typo\down.png" />
+    <Content Include="assets\img\typo\left_quote.png" />
+    <Content Include="assets\img\typo\note.png" />
+    <Content Include="assets\img\typo\plus.png" />
+    <Content Include="assets\img\typo\right_quote.png" />
+    <Content Include="assets\img\typo\sampleimage.jpg" />
+    <Content Include="assets\img\typo\star.png" />
+    <Content Include="assets\img\typo\tick.png" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\jquery.isotope.js" />
+    <Content Include="assets\js\jquery.min.js" />
+    <Content Include="assets\js\jquery.slicknav.js" />
+    <Content Include="assets\js\jquery.sticky.js" />
+    <Content Include="assets\js\jquery.visible.js" />
+    <Content Include="assets\js\modernizr.custom.js" />
+    <Content Include="assets\js\scripts.js" />
+    <Content Include="assets\js\slimbox2.js" />
+    <Content Include="assets\less\bootstrap\bootstrap.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -102,6 +300,80 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
+    <Content Include="assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\FontAwesome.otf" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\less\accordions.less" />
+    <Content Include="assets\less\blockquotes.less" />
+    <Content Include="assets\less\blog.less" />
+    <Content Include="assets\less\bootstrap\alerts.less" />
+    <Content Include="assets\less\bootstrap\badges.less" />
+    <Content Include="assets\less\bootstrap\bootstrap.less" />
+    <Content Include="assets\less\bootstrap\breadcrumbs.less" />
+    <Content Include="assets\less\bootstrap\button-groups.less" />
+    <Content Include="assets\less\bootstrap\buttons.less" />
+    <Content Include="assets\less\bootstrap\carousel.less" />
+    <Content Include="assets\less\bootstrap\close.less" />
+    <Content Include="assets\less\bootstrap\code.less" />
+    <Content Include="assets\less\bootstrap\component-animations.less" />
+    <Content Include="assets\less\bootstrap\dropdowns.less" />
+    <Content Include="assets\less\bootstrap\forms.less" />
+    <Content Include="assets\less\bootstrap\glyphicons.less" />
+    <Content Include="assets\less\bootstrap\grid.less" />
+    <Content Include="assets\less\bootstrap\input-groups.less" />
+    <Content Include="assets\less\bootstrap\jumbotron.less" />
+    <Content Include="assets\less\bootstrap\labels.less" />
+    <Content Include="assets\less\bootstrap\list-group.less" />
+    <Content Include="assets\less\bootstrap\media.less" />
+    <Content Include="assets\less\bootstrap\mixins.less" />
+    <Content Include="assets\less\bootstrap\modals.less" />
+    <Content Include="assets\less\bootstrap\navbar.less" />
+    <Content Include="assets\less\bootstrap\navs.less" />
+    <Content Include="assets\less\bootstrap\normalize.less" />
+    <Content Include="assets\less\bootstrap\pager.less" />
+    <Content Include="assets\less\bootstrap\pagination.less" />
+    <Content Include="assets\less\bootstrap\panels.less" />
+    <Content Include="assets\less\bootstrap\popovers.less" />
+    <Content Include="assets\less\bootstrap\print.less" />
+    <Content Include="assets\less\bootstrap\progress-bars.less" />
+    <Content Include="assets\less\bootstrap\responsive-utilities.less" />
+    <Content Include="assets\less\bootstrap\scaffolding.less" />
+    <Content Include="assets\less\bootstrap\tables.less" />
+    <Content Include="assets\less\bootstrap\theme.less" />
+    <Content Include="assets\less\bootstrap\thumbnails.less" />
+    <Content Include="assets\less\bootstrap\tooltip.less" />
+    <Content Include="assets\less\bootstrap\type.less" />
+    <Content Include="assets\less\bootstrap\utilities.less" />
+    <Content Include="assets\less\bootstrap\wells.less" />
+    <Content Include="assets\less\bootstrap.less" />
+    <Content Include="assets\less\carousels.less" />
+    <Content Include="assets\less\font-awesome.less" />
+    <Content Include="assets\less\glyphicons.less" />
+    <Content Include="assets\less\hornav.less" />
+    <Content Include="assets\less\mixins.less" />
+    <Content Include="assets\less\nexus.less" />
+    <Content Include="assets\less\pages.less" />
+    <Content Include="assets\less\panels.less" />
+    <Content Include="assets\less\portfolio.less" />
+    <Content Include="assets\less\progress-bars.less" />
+    <Content Include="assets\less\responsive-nav.less" />
+    <Content Include="assets\less\sidebar-menu.less" />
+    <Content Include="assets\less\social-icons.less" />
+    <Content Include="assets\less\tabs.less" />
+    <Content Include="assets\less\template.less" />
+    <Content Include="assets\less\testimonials.less" />
+    <Content Include="assets\less\thumbs-gallery.less" />
+    <Content Include="assets\less\typo.less" />
+    <Content Include="assets\less\utility-classes.less" />
+    <Content Include="assets\less\variables.less" />
+    <Content Include="Views\Shared\_mainLayout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_menuPartial.cshtml" />
+    <Content Include="Views\Shared\_footerPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -111,8 +383,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Teknik.BLL\Teknik.BLL.csproj">
+      <Project>{7c61476f-7123-4e7b-9822-e6a585d58475}</Project>
+      <Name>Teknik.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Teknik.Entity\Teknik.Entity.csproj">
+      <Project>{ebf60127-8f9c-4c4c-a208-a9398a663d13}</Project>
+      <Name>Teknik.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -143,8 +424,8 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

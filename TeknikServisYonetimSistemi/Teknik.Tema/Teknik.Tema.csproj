@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
-  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -43,8 +43,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -89,6 +89,190 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\animate.css" />
+    <Content Include="assets\css\bootstrap.css" />
+    <Content Include="assets\css\custom.css" />
+    <Content Include="assets\css\font-awesome.css" />
+    <Content Include="assets\css\nexus.css" />
+    <Content Include="assets\css\responsive.css" />
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\img\background.jpg" />
+    <Content Include="assets\img\blog\image1.jpg" />
+    <Content Include="assets\img\blog\image2.jpg" />
+    <Content Include="assets\img\blog\image3.jpg" />
+    <Content Include="assets\img\blog\image4.jpg" />
+    <Content Include="assets\img\blog\thumbs\thumb1.jpg" />
+    <Content Include="assets\img\blog\thumbs\thumb2.jpg" />
+    <Content Include="assets\img\blog\thumbs\thumb3.jpg" />
+    <Content Include="assets\img\blog\thumbs\thumb4.jpg" />
+    <Content Include="assets\img\fillers\aboutme.jpg" />
+    <Content Include="assets\img\fillers\filler1.jpg" />
+    <Content Include="assets\img\fillers\filler2.jpg" />
+    <Content Include="assets\img\fillers\filler3.jpg" />
+    <Content Include="assets\img\fillers\filler4.jpg" />
+    <Content Include="assets\img\frontpage\image1.jpg" />
+    <Content Include="assets\img\frontpage\image2.jpg" />
+    <Content Include="assets\img\frontpage\image3.jpg" />
+    <Content Include="assets\img\frontpage\image4.jpg" />
+    <Content Include="assets\img\frontpage\image5.jpg" />
+    <Content Include="assets\img\frontpage\image6.jpg" />
+    <Content Include="assets\img\hr.png" />
+    <Content Include="assets\img\ipads.jpg" />
+    <Content Include="assets\img\logo.png" />
+    <Content Include="assets\img\menu_arrow.png" />
+    <Content Include="assets\img\portfolio\image1.jpg" />
+    <Content Include="assets\img\portfolio\image10.jpg" />
+    <Content Include="assets\img\portfolio\image11.jpg" />
+    <Content Include="assets\img\portfolio\image12.jpg" />
+    <Content Include="assets\img\portfolio\image2.jpg" />
+    <Content Include="assets\img\portfolio\image3.jpg" />
+    <Content Include="assets\img\portfolio\image4.jpg" />
+    <Content Include="assets\img\portfolio\image5.jpg" />
+    <Content Include="assets\img\portfolio\image6.jpg" />
+    <Content Include="assets\img\portfolio\image7.jpg" />
+    <Content Include="assets\img\portfolio\image8.jpg" />
+    <Content Include="assets\img\portfolio\image9.jpg" />
+    <Content Include="assets\img\profiles\37.jpg" />
+    <Content Include="assets\img\profiles\53.jpg" />
+    <Content Include="assets\img\profiles\78.jpg" />
+    <Content Include="assets\img\profiles\84.jpg" />
+    <Content Include="assets\img\profiles\87.jpg" />
+    <Content Include="assets\img\profiles\99.jpg" />
+    <Content Include="assets\img\slideshow\slide1.jpg" />
+    <Content Include="assets\img\slideshow\slide2.jpg" />
+    <Content Include="assets\img\slideshow\slide3.jpg" />
+    <Content Include="assets\img\slideshow\slide4.jpg" />
+    <Content Include="assets\img\slimbox\closelabel.gif" />
+    <Content Include="assets\img\slimbox\loading.gif" />
+    <Content Include="assets\img\slimbox\nextlabel.gif" />
+    <Content Include="assets\img\slimbox\prevlabel.gif" />
+    <Content Include="assets\img\social_icons\aim.png" />
+    <Content Include="assets\img\social_icons\apple.png" />
+    <Content Include="assets\img\social_icons\behance.png" />
+    <Content Include="assets\img\social_icons\blogger.png" />
+    <Content Include="assets\img\social_icons\cargo.png" />
+    <Content Include="assets\img\social_icons\delicious.png" />
+    <Content Include="assets\img\social_icons\deviantart.png" />
+    <Content Include="assets\img\social_icons\digg.png" />
+    <Content Include="assets\img\social_icons\dopplr.png" />
+    <Content Include="assets\img\social_icons\dribbble.png" />
+    <Content Include="assets\img\social_icons\email.png" />
+    <Content Include="assets\img\social_icons\ember.png" />
+    <Content Include="assets\img\social_icons\evernote.png" />
+    <Content Include="assets\img\social_icons\facebook.png" />
+    <Content Include="assets\img\social_icons\flickr.png" />
+    <Content Include="assets\img\social_icons\forrst.png" />
+    <Content Include="assets\img\social_icons\github.png" />
+    <Content Include="assets\img\social_icons\google.png" />
+    <Content Include="assets\img\social_icons\googleplus.png" />
+    <Content Include="assets\img\social_icons\gowalla.png" />
+    <Content Include="assets\img\social_icons\grooveshark.png" />
+    <Content Include="assets\img\social_icons\html5.png" />
+    <Content Include="assets\img\social_icons\icloud.png" />
+    <Content Include="assets\img\social_icons\lastfm.png" />
+    <Content Include="assets\img\social_icons\linkedin.png" />
+    <Content Include="assets\img\social_icons\metacafe.png" />
+    <Content Include="assets\img\social_icons\mixx.png" />
+    <Content Include="assets\img\social_icons\myspace.png" />
+    <Content Include="assets\img\social_icons\netvibes.png" />
+    <Content Include="assets\img\social_icons\newsvine.png" />
+    <Content Include="assets\img\social_icons\orkut.png" />
+    <Content Include="assets\img\social_icons\paypal.png" />
+    <Content Include="assets\img\social_icons\picasa.png" />
+    <Content Include="assets\img\social_icons\pinterest.png" />
+    <Content Include="assets\img\social_icons\plurk.png" />
+    <Content Include="assets\img\social_icons\posterous.png" />
+    <Content Include="assets\img\social_icons\reddit.png" />
+    <Content Include="assets\img\social_icons\rss.png" />
+    <Content Include="assets\img\social_icons\skype.png" />
+    <Content Include="assets\img\social_icons\stumbleupon.png" />
+    <Content Include="assets\img\social_icons\technorati.png" />
+    <Content Include="assets\img\social_icons\tumblr.png" />
+    <Content Include="assets\img\social_icons\twitter.png" />
+    <Content Include="assets\img\social_icons\vimeo.png" />
+    <Content Include="assets\img\social_icons\wordpress.png" />
+    <Content Include="assets\img\social_icons\yahoo.png" />
+    <Content Include="assets\img\social_icons\yelp.png" />
+    <Content Include="assets\img\social_icons\youtube.png" />
+    <Content Include="assets\img\social_icons\zerply.png" />
+    <Content Include="assets\img\social_icons\zootool.png" />
+    <Content Include="assets\img\theteam\image1.jpg" />
+    <Content Include="assets\img\theteam\image2.jpg" />
+    <Content Include="assets\img\theteam\image3.jpg" />
+    <Content Include="assets\img\thumbsgallery\image01.jpg" />
+    <Content Include="assets\img\thumbsgallery\image02.jpg" />
+    <Content Include="assets\img\thumbsgallery\image03.jpg" />
+    <Content Include="assets\img\thumbsgallery\image04.jpg" />
+    <Content Include="assets\img\thumbsgallery\image05.jpg" />
+    <Content Include="assets\img\thumbsgallery\image06.jpg" />
+    <Content Include="assets\img\thumbsgallery\image07.jpg" />
+    <Content Include="assets\img\thumbsgallery\image08.jpg" />
+    <Content Include="assets\img\thumbsgallery\image09.jpg" />
+    <Content Include="assets\img\thumbsgallery\thumbs\image01.jpg" />
+    <Content Include="assets\img\thumbsgallery\thumbs\image02.jpg" />
+    <Content Include="assets\img\thumbsgallery\thumbs\image03.jpg" />
+    <Content Include="assets\img\thumbsgallery\thumbs\image04.jpg" />
+    <Content Include="assets\img\thumbsgallery\thumbs\image05.jpg" />
+    <Content Include="assets\img\thumbsgallery\thumbs\image06.jpg" />
+    <Content Include="assets\img\thumbsgallery\thumbs\image07.jpg" />
+    <Content Include="assets\img\thumbsgallery\thumbs\image08.jpg" />
+    <Content Include="assets\img\thumbsgallery\thumbs\image09.jpg" />
+    <Content Include="assets\img\typo\attach.png" />
+    <Content Include="assets\img\typo\clip.png" />
+    <Content Include="assets\img\typo\down.png" />
+    <Content Include="assets\img\typo\left_quote.png" />
+    <Content Include="assets\img\typo\note.png" />
+    <Content Include="assets\img\typo\plus.png" />
+    <Content Include="assets\img\typo\right_quote.png" />
+    <Content Include="assets\img\typo\sampleimage.jpg" />
+    <Content Include="assets\img\typo\star.png" />
+    <Content Include="assets\img\typo\tick.png" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\jquery.isotope.js" />
+    <Content Include="assets\js\jquery.min.js" />
+    <Content Include="assets\js\jquery.slicknav.js" />
+    <Content Include="assets\js\jquery.sticky.js" />
+    <Content Include="assets\js\jquery.visible.js" />
+    <Content Include="assets\js\modernizr.custom.js" />
+    <Content Include="assets\js\scripts.js" />
+    <Content Include="assets\js\slimbox2.js" />
+    <Content Include="assets\less\bootstrap\bootstrap.css" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\csi.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
+    <Content Include="bin\roslyn\System.AppContext.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.StackTrace.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.Primitives.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.Webpages.Deployment.dll" />
+    <Content Include="bin\System.Web.Webpages.Deployment.xml" />
+    <Content Include="bin\System.Web.Webpages.dll" />
+    <Content Include="bin\System.Web.Webpages.Razor.dll" />
+    <Content Include="bin\System.Web.Webpages.Razor.xml" />
+    <Content Include="bin\System.Web.Webpages.xml" />
+    <Content Include="bin\Teknik.Tema.dll" />
+    <Content Include="bin\Teknik.Tema.pdb" />
     <Content Include="blank-page.html" />
     <Content Include="blog-list.html" />
     <Content Include="blog-single.html" />
@@ -111,6 +295,9 @@
     <Content Include="features-typo-blockquotes.html" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <Content Include="obj\Debug\Teknik.Tema.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Teknik.Tema.dll" />
+    <Content Include="obj\Debug\Teknik.Tema.pdb" />
     <Content Include="pages-404.html" />
     <Content Include="pages-about-me.html" />
     <Content Include="pages-about-us.html" />
@@ -132,11 +319,94 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
+    <Content Include="assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\FontAwesome.otf" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\less\accordions.less" />
+    <Content Include="assets\less\blockquotes.less" />
+    <Content Include="assets\less\blog.less" />
+    <Content Include="assets\less\bootstrap.less" />
+    <Content Include="assets\less\bootstrap\alerts.less" />
+    <Content Include="assets\less\bootstrap\badges.less" />
+    <Content Include="assets\less\bootstrap\bootstrap.less" />
+    <Content Include="assets\less\bootstrap\breadcrumbs.less" />
+    <Content Include="assets\less\bootstrap\button-groups.less" />
+    <Content Include="assets\less\bootstrap\buttons.less" />
+    <Content Include="assets\less\bootstrap\carousel.less" />
+    <Content Include="assets\less\bootstrap\close.less" />
+    <Content Include="assets\less\bootstrap\code.less" />
+    <Content Include="assets\less\bootstrap\component-animations.less" />
+    <Content Include="assets\less\bootstrap\dropdowns.less" />
+    <Content Include="assets\less\bootstrap\forms.less" />
+    <Content Include="assets\less\bootstrap\glyphicons.less" />
+    <Content Include="assets\less\bootstrap\grid.less" />
+    <Content Include="assets\less\bootstrap\input-groups.less" />
+    <Content Include="assets\less\bootstrap\jumbotron.less" />
+    <Content Include="assets\less\bootstrap\labels.less" />
+    <Content Include="assets\less\bootstrap\list-group.less" />
+    <Content Include="assets\less\bootstrap\media.less" />
+    <Content Include="assets\less\bootstrap\mixins.less" />
+    <Content Include="assets\less\bootstrap\modals.less" />
+    <Content Include="assets\less\bootstrap\navbar.less" />
+    <Content Include="assets\less\bootstrap\navs.less" />
+    <Content Include="assets\less\bootstrap\normalize.less" />
+    <Content Include="assets\less\bootstrap\pager.less" />
+    <Content Include="assets\less\bootstrap\pagination.less" />
+    <Content Include="assets\less\bootstrap\panels.less" />
+    <Content Include="assets\less\bootstrap\popovers.less" />
+    <Content Include="assets\less\bootstrap\print.less" />
+    <Content Include="assets\less\bootstrap\progress-bars.less" />
+    <Content Include="assets\less\bootstrap\responsive-utilities.less" />
+    <Content Include="assets\less\bootstrap\scaffolding.less" />
+    <Content Include="assets\less\bootstrap\tables.less" />
+    <Content Include="assets\less\bootstrap\theme.less" />
+    <Content Include="assets\less\bootstrap\thumbnails.less" />
+    <Content Include="assets\less\bootstrap\tooltip.less" />
+    <Content Include="assets\less\bootstrap\type.less" />
+    <Content Include="assets\less\bootstrap\utilities.less" />
+    <Content Include="assets\less\bootstrap\wells.less" />
+    <Content Include="assets\less\carousels.less" />
+    <Content Include="assets\less\font-awesome.less" />
+    <Content Include="assets\less\glyphicons.less" />
+    <Content Include="assets\less\hornav.less" />
+    <Content Include="assets\less\mixins.less" />
+    <Content Include="assets\less\nexus.less" />
+    <Content Include="assets\less\pages.less" />
+    <Content Include="assets\less\panels.less" />
+    <Content Include="assets\less\portfolio.less" />
+    <Content Include="assets\less\progress-bars.less" />
+    <Content Include="assets\less\responsive-nav.less" />
+    <Content Include="assets\less\sidebar-menu.less" />
+    <Content Include="assets\less\social-icons.less" />
+    <Content Include="assets\less\tabs.less" />
+    <Content Include="assets\less\template.less" />
+    <Content Include="assets\less\testimonials.less" />
+    <Content Include="assets\less\thumbs-gallery.less" />
+    <Content Include="assets\less\typo.less" />
+    <Content Include="assets\less\utility-classes.less" />
+    <Content Include="assets\less\variables.less" />
+    <Content Include="bin\roslyn\csc.exe.config" />
+    <Content Include="bin\roslyn\csc.rsp" />
+    <Content Include="bin\roslyn\csi.rsp" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\vbc.exe.config" />
+    <Content Include="bin\roslyn\vbc.rsp" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="bin\Teknik.Tema.dll.config" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -146,9 +416,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="assets\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -179,8 +449,8 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
