@@ -84,7 +84,30 @@
                     </ul>
                     <ul id="hornavmenu" class="nav navbar-nav pull-right">
                         <li class="pull-right">
-                            <a href="@Url.Action("Login","Account")" class="fa-comment">Giriş Yap</a>
+                            @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                            {
+                                <span class="fa-font ">@HttpContext.Current.User.Identity.GetUserName() Profili</span>
+                                <ul>
+                                    <li>
+                                        <a href="@Url.Action("Profile","Account")">Profilim</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Logout","Account")">Çıkış Yap</a>
+                                    </li>
+                                </ul>
+                            }
+                            else
+                            {
+                                <span class="fa-font ">Giriş / Kayıt</span>
+                                <ul>
+                                    <li>
+                                        <a href="@Url.Action("Login","Account")">Giriş Yap</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Register","Account")">Kayıt ol</a>
+                                    </li>
+                                </ul>
+                            }
                         </li>
                     </ul>
                 </div>
