@@ -1,4 +1,4 @@
-﻿@model LoginViewModel
+﻿@model LoginAndRegisterViewModel
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_mainLayout.cshtml";
@@ -7,6 +7,7 @@
     @Html.ValidationSummary()
     @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "login-page" }))
     {
+        @Html.AntiForgeryToken()
         <div class="login-header margin-bottom-30">
             <h2>Kullanıcı Girişi</h2>
         </div>
@@ -14,29 +15,34 @@
             <span class="input-group-addon">
                 <i class="fa fa-user"></i>
             </span>
-            <input placeholder="Username" class="form-control" type="text">
+            @Html.TextBoxFor(x => x.Login.KullaniciAdi, new { @class = "form-control", placeholder = "Kulanıcı Adı" })
         </div>
         <div class="input-group margin-bottom-20">
             <span class="input-group-addon">
                 <i class="fa fa-lock"></i>
             </span>
-            <input placeholder="Password" class="form-control" type="password">
+            @Html.TextBoxFor(x => x.Login.Sifre, new { @class = "form-control", placeholder = "Şifre", type = "password" })
         </div>
         <div class="row">
             <div class="col-md-6">
                 <label class="checkbox">
-                    <input type="checkbox">Stay signed in
+                    @Html.CheckBoxFor(x => x.Login.HatirlansinMi)
+                    Beni Hatırla
                 </label>
             </div>
             <div class="col-md-6">
-                <button class="btn btn-primary pull-right" type="submit">Login</button>
+                <button class="btn btn-primary pull-right" type="submit">Giriş Yap</button>
             </div>
         </div>
-        <hr>
-        <h4>Forget your Password ?</h4>
-        <p>
-            <a href="#">Click here</a>to reset your password.
-        </p>
+            <hr>
+            <h4>Şifreni mi unuttun ?</h4>
+            <p>
+                <a href="#">Buraya tıkla</a>
+            </p>
+            <h4>Hesabın yok mu ?</h4>
+            <p>
+                <a href="@Url.Action("Register","Account")">Buraya tıkla</a>
+            </p>
     }
 </div>
 

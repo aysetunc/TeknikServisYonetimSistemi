@@ -9,6 +9,10 @@ namespace Teknik.MVC.Controllers
     public class AccountController : Controller
     {
         // GET: Account
+        public ActionResult Register()
+        {
+            return View();
+        }
         public ActionResult Login()
         {
             return View();

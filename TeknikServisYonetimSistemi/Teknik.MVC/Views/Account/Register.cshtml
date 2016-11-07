@@ -1,0 +1,53 @@
+﻿@model LoginAndRegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_mainLayout.cshtml";
+}
+<div class="auth__wrap auth__wrap--register">
+    <!-- BEGIN AUTH REGISTER-->
+    <h5 class="auth__title">Kullanıcı Bilgileri</h5>
+    @Html.ValidationSummary()
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "auth__form js-register-form js-parsley" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="col-md-6">
+            <div class="auth__coll form-group">
+                @Html.LabelFor(x => x.Register.Username, new { @class = "auth__label control-label" })
+                @Html.TextBoxFor(x => x.Register.Username, new { @class = "auth__in auth__in--text form-control" })
+            </div>
+            <div class="auth__coll form-group">
+                @Html.LabelFor(x => x.Register.Name, new { @class = "auth__label control-label" })
+                @Html.TextBoxFor(x => x.Register.Name, new { @class = "auth__in auth__in--text form-control" })
+            </div>
+            <div class="auth__coll auth__coll--right form-group">
+                @Html.LabelFor(x => x.Register.PhoneNumber, new { @class = "auth__label control-label" })
+                @Html.TextBoxFor(x => x.Register.PhoneNumber, new { @class = "auth__in auth__in--text form-control" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="auth__coll auth__coll--right form-group">
+                @Html.LabelFor(x => x.Register.Email, new { @class = "auth__label control-label" })
+                @Html.TextBoxFor(x => x.Register.Email, new { @class = "auth__in auth__in--text form-control" })
+            </div>
+            <div class="auth__coll auth__coll--right form-group">
+                @Html.LabelFor(x => x.Register.Surname, new { @class = "auth__label control-label" })
+                @Html.TextBoxFor(x => x.Register.Surname, new { @class = "auth__in auth__in--text form-control" })
+            </div>
+            <div class="auth__coll form-group">
+                @Html.LabelFor(x => x.Register.Password, new { @class = "auth__label control-label" })
+                @Html.TextBoxFor(x => x.Register.Password, new { @class = "auth__in auth__in--text form-control", type = "password" })
+            </div>
+            <div class="auth__coll auth__coll--right form-group">
+                @Html.LabelFor(x => x.Register.ConfirmPassword, new { @class = "auth__label control-label" })
+                @Html.TextBoxFor(x => x.Register.ConfirmPassword, new { @class = "auth__in auth__in--text form-control", type = "password" })
+            </div>
+            <div class="auth__row">
+                <span class="auth__links">Üye iseniz<a href="@Url.Action("Login","Account")">Giriş Yap</a></span>
+                <button type="submit" class="auth__in auth__in--submit">Kayıt Ol</button>
+            </div>
+        </div>
+    }
+    <!-- end of block .auth__form-->
+    <!-- END AUTH REGISTER-->
+</div>
+
