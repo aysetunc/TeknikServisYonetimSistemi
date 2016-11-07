@@ -26,15 +26,15 @@ namespace Teknik.Entity.Entities
         public DateTime? OnaylamaTarihi { get; set; }
         public bool OnaylandiMi { get; set; }
         public string KullaniciID { get; set; }
-        public int MarkaID { get; set; }
+        //public int MarkaID { get; set; }
         public int ModelID { get; set; }
 
 
 
         [ForeignKey("KullaniciID")]
         public virtual ApplicationUser Gondereni { get; set; }
-        [ForeignKey("MarkaID")]
-        public virtual PcMarka Markasi { get; set; }
+        //[ForeignKey("MarkaID")]
+        //public virtual PcMarka Markasi { get; set; }
         [ForeignKey("ModelID")]
         public virtual PcModel Modeli { get; set; }
 
