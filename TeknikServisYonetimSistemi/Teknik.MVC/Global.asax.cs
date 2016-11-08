@@ -25,6 +25,14 @@ namespace Teknik.MVC
                     Description = "Site Yöneticisi"
                 });
             }
+            if (!roleManager.RoleExists("Teknisyen"))
+            {
+                roleManager.Create(new ApplicationRole()
+                {
+                    Name = "Teknisyen",
+                    Description = "Teknisyen üye"
+                });
+            }
             if (!roleManager.RoleExists("User"))
             {
                 roleManager.Create(new ApplicationRole()

@@ -5,7 +5,19 @@
 }
 <div class="auth__wrap auth__wrap--register">
     <!-- BEGIN AUTH REGISTER-->
-    <h5 class="auth__title">Kullanıcı Bilgileri</h5>
+    <header class="listing__header">
+        <h1 class="listing__title">@Model.Username Profil Sayfası</h1>
+        <h2 class="listing__headline">Kişisel bilgilerinizi düzenleyebilirsiniz</h2>
+    </header>
+    <div class="listing__panel">
+        <span class="listing__header-text listing__header-text--edit">
+            @if (HttpContext.Current.User.IsInRole("Passive"))
+            {
+                <span>@Html.ValidationSummary()</span>
+                <a href="@Url.Action("ResendActivation","Account")">Aktivasyon kodunu tekrar yolla</a>
+            }
+        </span>
+    </div>
     @Html.ValidationSummary()
     @using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { @class = "auth__form js-register-form js-parsley" }))
     {
@@ -39,25 +51,29 @@
         </div>
     }
     <hr>
+    <br />
     @Html.ValidationSummary()
     @using (Html.BeginForm("ChangePassword", "Account", FormMethod.Post, new { @class = "auth__form js-register-form js-parsley" }))
     {
         @Html.AntiForgeryToken()
-        <div class="auth__coll form-group">
-            @Html.LabelFor(x => x.OldPassword, new { @class = "auth__label control-label" })
-            @Html.TextBoxFor(x => x.OldPassword, new { @class = "auth__in auth__in--text form-control", type = "password" })
+        <div class="col-md-6">
+            <div class="auth__coll form-group">
+                @Html.LabelFor(x => x.OldPassword, new { @class = "auth__label control-label" })
+                @Html.TextBoxFor(x => x.OldPassword, new { @class = "auth__in auth__in--text form-control", type = "password" })
+            </div>
+            <div class="auth__coll form-group">
+                @Html.LabelFor(x => x.Password, new { @class = "auth__label control-label" })
+                @Html.TextBoxFor(x => x.Password, new { @class = "auth__in auth__in--text form-control", type = "password" })
+            </div>
+            <div class="auth__coll auth__coll--right form-group">
+                @Html.LabelFor(x => x.ConfirmPassword, new { @class = "auth__label control-label" })
+                @Html.TextBoxFor(x => x.ConfirmPassword, new { @class = "auth__in auth__in--text form-control", type = "password" })
+            </div>
+            <div class="auth__row">
+                <button type="submit" class="auth__in auth__in--submit pull-right">Şifreyi Değiştir</button>
+            </div>
         </div>
-        <div class="auth__coll form-group">
-            @Html.LabelFor(x => x.Password, new { @class = "auth__label control-label" })
-            @Html.TextBoxFor(x => x.Password, new { @class = "auth__in auth__in--text form-control", type = "password" })
-        </div>
-        <div class="auth__coll auth__coll--right form-group">
-            @Html.LabelFor(x => x.ConfirmPassword, new { @class = "auth__label control-label" })
-            @Html.TextBoxFor(x => x.ConfirmPassword, new { @class = "auth__in auth__in--text form-control", type = "password" })
-        </div>
-        <div class="auth__row">
-            <button type="submit" class="auth__in auth__in--submit pull-right">Şifreyi Değiştir</button>
-        </div>
+
     }
     <!-- end of block .auth__form-->
     <!-- END AUTH REGISTER-->
