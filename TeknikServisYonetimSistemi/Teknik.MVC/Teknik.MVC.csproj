@@ -293,6 +293,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -381,6 +382,9 @@
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Account\RecoverPassword.cshtml" />
     <Content Include="Views\Account\Activation.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\_adminmenuPartial.cshtml" />
+    <Content Include="Views\Admin\Settings.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

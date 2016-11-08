@@ -1,0 +1,133 @@
+﻿@model SettingsViewModel
+@{
+    ViewBag.Title = "Ayarlar";
+    Layout = "~/Views/Shared/_mainLayout.cshtml";
+}
+<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            İlan Türleri
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Ad</th>
+                            <th>Yönetim</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int sayac = 0;
+                            foreach (var item in Model.PcMarkalari)
+                            {
+                                sayac++;
+                                <tr>
+                                    <td>@sayac</td>
+                                    <td>@item.MarkaAdi </td>
+                                    <td>
+                                        <input type="button" class="btn btn-sm btn-warning guncelle" value="Güncelle" name="@item.ID" />
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                <div class="form-horizontal">
+                    <div class="form-group-sm">
+                        @Html.LabelFor(x => x.PcMarkasi.MarkaAdi)
+                        @Html.TextBoxFor(x => x.PcMarkasi.MarkaAdi, new { @class = "form-control", id = "txtPcMarka" })
+                    </div>
+                    <input type="button" value="Marka Ekle" id="btnpcMarkaekle" class="btn btn-sm btn-info" />
+                    <input type="button" value="Güncelle" id="btnpcMarkaguncelle" class="btn btn-sm btn-warning hidden" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+<div class="panel panel-default">
+        <div class="panel-heading">
+            İlan Türleri
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Ad</th>
+                            <th>Yönetim</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int sayac1 = 0;
+                            foreach (var item in Model.PcModelleri)
+                            {
+                                sayac1++;
+                                <tr>
+                                    <td>@sayac1</td>
+                                    <td>@item.ModelAdi </td>
+                                    <td>
+                                        <input type="button" class="btn btn-sm btn-warning guncelle" value="Güncelle" name="@item.ID" />
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                <div class="form-horizontal">
+                    <div class="form-group-sm">
+                        @Html.LabelFor(x => x.PcModeli.ModelAdi)
+                        @Html.TextBoxFor(x => x.PcModeli.ModelAdi, new { @class = "form-control", id = "txtPcModel" })
+                    </div>
+                    <input type="button" value="Model Ekle" id="btnpcModelekle" class="btn btn-sm btn-info" />
+                    <input type="button" value="Güncelle" id="btnpcModelguncelle" class="btn btn-sm btn-warning hidden" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            İlan Türleri
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Ad</th>
+                            <th>Şimdiki Rol</th>
+                            <th>Roller</th>
+                            <th>Yönetim</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int sayac2 = 0;
+                            foreach (var item in Model.Kullanicilar)
+                            {
+                                sayac2++;
+                                <tr>
+                                    <td>@sayac2</td>
+                                    <td>@item.KullaniciAdi</td>
+                                    <td>@item.Rol</td>
+                                    <td>
+                                        @Html.DropDownListFor(x => x.Yetkiler, (List<SelectListItem>)ViewBag.Yetkiler, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        <input type="button" class="btn btn-sm btn-warning guncelle" value="Güncelle" name="@item.ID" />
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
