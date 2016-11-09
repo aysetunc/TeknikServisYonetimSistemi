@@ -3,10 +3,11 @@
     ViewBag.Title = "Ayarlar";
     Layout = "~/Views/Shared/_mainLayout.cshtml";
 }
-<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+@{Html.RenderAction("AdminMenu", "Admin"); }
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
     <div class="panel panel-default">
         <div class="panel-heading">
-            İlan Türleri
+            Markalar
         </div>
         <div class="panel-body">
             <div class="table-responsive">
@@ -27,7 +28,7 @@
                                     <td>@sayac</td>
                                     <td>@item.MarkaAdi </td>
                                     <td>
-                                        <input type="button" class="btn btn-sm btn-warning guncelle" value="Güncelle" name="@item.ID" />
+                                        <input type="button" class="btn btn-sm btn-warning markaguncelle" value="Güncelle" name="@item.ID" />
                                     </td>
                                 </tr>
                             }
@@ -46,10 +47,10 @@
         </div>
     </div>
 </div>
-<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-<div class="panel panel-default">
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <div class="panel panel-default">
         <div class="panel-heading">
-            İlan Türleri
+            Modeller
         </div>
         <div class="panel-body">
             <div class="table-responsive">
@@ -59,6 +60,9 @@
                             <th>#</th>
                             <th>Ad</th>
                             <th>Yönetim</th>
+                            <th>
+                                @Html.DropDownListFor(x => x.PcMarkasi.ID, (List<SelectListItem>)ViewBag.markalar, new { @class = "changemarka" })
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,7 +74,7 @@
                                     <td>@sayac1</td>
                                     <td>@item.ModelAdi </td>
                                     <td>
-                                        <input type="button" class="btn btn-sm btn-warning guncelle" value="Güncelle" name="@item.ID" />
+                                        <input type="button" class="btn btn-sm btn-warning modelguncelle" value="Güncelle" name="@item.ID" />
                                     </td>
                                 </tr>
                             }
@@ -89,10 +93,10 @@
         </div>
     </div>
 </div>
-<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="panel panel-default">
         <div class="panel-heading">
-            İlan Türleri
+            Kullanıcılar
         </div>
         <div class="panel-body">
             <div class="table-responsive">
@@ -114,12 +118,12 @@
                                 <tr>
                                     <td>@sayac2</td>
                                     <td>@item.KullaniciAdi</td>
-                                    <td>@item.Rol</td>
-                                    <td>
-                                        @Html.DropDownListFor(x => x.Yetkiler, (List<SelectListItem>)ViewBag.Yetkiler, new { @class = "form-control" })
+                                    <td id="trole_@item.ID">@item.Rol</td>
+                                    <td id="td_@item.ID">
+                                        @Html.DropDownListFor(x => x.RoleId, (List<SelectListItem>)ViewBag.roller, new { @class = "changerole" })
                                     </td>
                                     <td>
-                                        <input type="button" class="btn btn-sm btn-warning guncelle" value="Güncelle" name="@item.ID" />
+                                        <input type="button" class="btn btn-sm btn-warning rolguncelle" value="Güncelle" id="@item.ID" />
                                     </td>
                                 </tr>
                             }
@@ -130,4 +134,138 @@
         </div>
     </div>
 </div>
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script>
+    $("#btnpcModelekle").click(function () {
+        var markaid = $(".changemarka option:selected").val();
+        var markaadi = $(".changemarka option:selected").text();
+        var yenimodeladi = $("#txtPcModel").val();
+        console.log(markaid, markaadi, yenimodeladi);
+        $.ajax({
+            url: '@Url.Action("YeniModelAdi", "Admin")?markaid=' + markaid + '&markaadi=' + markaadi + '&yenimodeladi=' + yenimodeladi,
+            type: 'POST',
+            success: function (response) {
+                if (response.success == true)
+                    window.location.href = '@Url.Action("Settings","Admin")';
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+    var modelid = 0;
+    $(".modelguncelle").click(function () {
+        $("#btnpcModelekle").addClass("hidden");
+        $("#btnpcModelguncelle").removeClass("hidden");
+        modelid = this.name;
+        $.ajax({
+            url: '@Url.Action("modelGetir", "Admin")/' + modelid,
+            type: "GET",
+            success: function (data) {
+                if (data.success == true) {
+                    $("#txtPcModel").val(data.message);
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+    $("#btnpcModelguncelle").click(function () {
+        var guncellenecekmodelAdi = $("#txtPcModel").val();
+        var markaid = $(".changemarka option:selected").val();
+        console.log(guncellenecekmodelAdi);
+        $.ajax({
+            url: '@Url.Action("modelGuncelle", "Admin")?modelid=' + modelid + '&modeladi=' + guncellenecekmodelAdi + '&markaid=' + markaid,
+            type: 'POST',
+            success: function (data) {
+                if (data.success == true) {
+                    window.location.href = '@Url.Action("settings","admin")';
+                    alert(data.message);
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+    $(".rolguncelle").click(function () {
+        var id = this.id;
+        var rolename = $("#td_" + id + " .changerole option:selected").text();
+        var oldrole = $("#trole_" + id).text();
+        console.log(oldrole);
+        $.ajax({
+            url: '@Url.Action("RolGuncelle","Admin")?id=' + id + '&rolename=' + rolename + '&oldrole=' + oldrole,
+            type: 'POST',
+            success: function (response) {
+                if (response.success == true)
+                    window.location.href = '@Url.Action("Settings","Admin")';
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+    $("#btnpcMarkaekle").click(function () {
+        var markaadi = $("#txtPcMarka").val();
+        console.log(markaadi);
+        if (markaadi.lenght == 0)
+        { return; }
+        $.ajax({
+            url: '@Url.Action("YeniMarkaAdi","Admin")?markaadi=' + markaadi,
+            type: 'POST',
+            success: function (response) {
+                if (response.success == true) {
+                    window.location.href = '@Url.Action("Settings","Admin")';
+                }
+                else {
+                    alert(response.message);
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
 
+    var markaid = 0;
+    $(".markaguncelle").click(function () {
+        $("#btnpcMarkaekle").addClass("hidden");
+        $("#btnpcMarkaguncelle").removeClass("hidden");
+        markaid = this.name;
+        $.ajax({
+            url: '@Url.Action("markaGetir", "Admin")/' + markaid,
+            type: "GET",
+            success: function (data) {
+                if (data.success == true) {
+                    $("#txtPcMarka").val(data.message);
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+    $("#btnpcMarkaguncelle").click(function () {
+        var guncellenecekMarkaAdi = $("#txtPcMarka").val();
+        console.log(guncellenecekMarkaAdi);
+        $.ajax({
+            url: '@Url.Action("markaguncelle","Admin")?markaid=' + markaid + '&markaadi=' + guncellenecekMarkaAdi,
+            type: 'POST',
+            success: function (data) {
+                if (data.success == true) {
+                    window.location.href = '@Url.Action("settings","admin")';
+                    alert(data.message);
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+
+</script>

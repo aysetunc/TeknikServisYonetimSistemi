@@ -15,6 +15,7 @@ namespace Teknik.Entity.ViewModels
         public List<YönetimYetkiViewModel> Yetkiler = new List<YönetimYetkiViewModel>();
         public PcModelViewModel PcModeli { get; set; }
         public PcMarkaViewModel PcMarkasi { get; set; }
+        public string RoleId { get; set; }
     }
     public class PcMarkaViewModel
     {

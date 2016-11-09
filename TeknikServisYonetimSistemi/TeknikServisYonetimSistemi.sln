@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teknik.MVC", "Teknik.MVC\Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teknik.Tema", "Teknik.Tema\Teknik.Tema.csproj", "{D61FE1F3-D5AE-4CF4-B9E0-22BC3D935F57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeknikAdmin.UI.MVC", "TeknikAdmin.UI.MVC\TeknikAdmin.UI.MVC.csproj", "{95A1EBD7-B72F-4534-AD18-F970F1A677C5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,10 +39,6 @@ Global
 		{D61FE1F3-D5AE-4CF4-B9E0-22BC3D935F57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D61FE1F3-D5AE-4CF4-B9E0-22BC3D935F57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D61FE1F3-D5AE-4CF4-B9E0-22BC3D935F57}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95A1EBD7-B72F-4534-AD18-F970F1A677C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95A1EBD7-B72F-4534-AD18-F970F1A677C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95A1EBD7-B72F-4534-AD18-F970F1A677C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95A1EBD7-B72F-4534-AD18-F970F1A677C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
