@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_mainLayout.cshtml";
+}
+<div id="content">
+    <div class="container background-white">
+        <div class="container">
+            <div class="row margin-vert-30">
+                <h2>Yönetim Sayfası</h2>
+                @{Html.RenderAction("TeknisyenMenu", "Teknisyen");}
+            </div>
+        </div>
+    </div>
+</div>
+

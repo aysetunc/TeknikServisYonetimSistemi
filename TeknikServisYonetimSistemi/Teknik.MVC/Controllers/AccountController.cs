@@ -66,7 +66,7 @@ namespace Teknik.MVC.Controllers
                         Message = $"Merhaba {user.UserName}, </br> Sisteme başarı ile kayıt oldunuz. <br/> Hesabınızı aktifleştirmek için <a href='http://localhost:14320/Account/Activation?code={aktivasyonKodu}'>Aktivasyon Kodu</a>"
                     });
                 }
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Account");
             }
             else
             {

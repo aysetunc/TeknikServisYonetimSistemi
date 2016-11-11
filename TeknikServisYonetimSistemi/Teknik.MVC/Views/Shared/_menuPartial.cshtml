@@ -11,7 +11,7 @@
                             <span class="fa-gears ">Teknik Servis</span>
                             <ul>
                                 <li>
-                                    <a href="#">Arıza Bildirimi Yap</a>
+                                    <a href="@Url.Action("ArizaEkle","Ariza")">Arıza Bildirimi Yap</a>
                                 </li>
                                 <li>
                                     <a href="#">Geçmiş Ariza Bildirimlerim</a>
@@ -95,6 +95,12 @@
                                     {
                                         <li>
                                             <a href="@Url.Action("Index","Admin")">Yönetim Paneli</a>
+                                        </li>
+                                    }
+                                    @if (HttpContext.Current.User.IsInRole("Teknisyen"))
+                                    {
+                                        <li>
+                                            <a href="@Url.Action("Index","Teknisyen")">Yönetim Paneli</a>
                                         </li>
                                     }
                                     <li>

@@ -59,7 +59,6 @@ namespace Teknik.MVC.Controllers
             ViewBag.roller = roller;
             var markalar = new List<SelectListItem>();
             new PcMarkaRepo().GetAll().ForEach(m =>
-
             markalar.Add(new SelectListItem()
             {
                 Text = m.MarkaAdi,
@@ -68,8 +67,133 @@ namespace Teknik.MVC.Controllers
             ViewBag.markalar = markalar;
             return View(model);
         }
+        public ActionResult ArizaYonetimi()
+        {
+            List<ArizaViewModel> arizalar = new ArizaRepo().GetAll().OrderByDescending(y => y.EklemeTarihi).Select(x => new ArizaViewModel()
+            {
+                KullaniciID = x.KullaniciID,
+                Aciklama = x.Aciklama,
+                Adres = x.Adres,
+                Baslik = x.Baslik,
+                Boylam = x.Boylam,
+                Enlem = x.Enlem,
+                MarkaID = x.MarkaID,
+                ModelID = x.ModelID,
+                TeknikerID = x.TeknikerID,
+                FotografYollari = (x.Fotograflari.Count > 0 ? x.Fotograflari.Select(y => y.Yol).ToList() : new List<string>()),
+                ID = x.ID,
+                OnaylamaTarihi = x.OnaylamaTarihi
+            }).ToList();
+            return View(arizalar);
+        }
+        public ActionResult ArizaDetay(int? id)
+        {
+            var markalar = new List<SelectListItem>();
+            new PcMarkaRepo().GetAll().OrderBy(x => x.MarkaAdi).ToList().ForEach(x =>
+            markalar.Add(new SelectListItem()
+            {
+                Text = x.MarkaAdi,
+                Value = x.ID.ToString()
+            }));
+            var modeller = new List<SelectListItem>();
+            new PcModelRepo().GetAll().OrderBy(x => x.ModelAdi).ToList().ForEach(x =>
+               modeller.Add(new SelectListItem()
+               {
+                   Text = x.ModelAdi,
+                   Value = x.ID.ToString()
+               }));
+
+            var userManager = MembershipTools.NewUserManager();
+            List<ApplicationUser> kullanicilar = userManager.Users.ToList();
+            var Kullanicilar = kullanicilar.Select(x => new KullaniciViewModel()
+            {
+                ID = x.Id,
+                Email = x.Email,
+                KullaniciAdi = x.UserName,
+                Rol = MembershipTools.NewRoleManager().FindById(x.Roles.FirstOrDefault().RoleId).Name
+            }).Where(x => x.Rol == "Teknisyen").ToList();
+            var Teknisyenler = new List<SelectListItem>();
+            Kullanicilar.ForEach(x => Teknisyenler.Add(new SelectListItem()
+            {
+                Text = x.KullaniciAdi,
+                Value = x.ID.ToString()
+            }));
+            ViewBag.teknikerler = Teknisyenler;
+            ViewBag.modelleri = modeller;
+            ViewBag.markalari = markalar;
+            if (id == null)
+                return RedirectToAction("ArizaYonetimi");
+            var ariza = new ArizaRepo().GetByID(id.Value);
+            if (ariza == null)
+                return RedirectToAction("ArizaYonetimi");
+            var model = new ArizaViewModel()
+            {
+                Baslik = ariza.Baslik,
+                Aciklama = ariza.Aciklama,
+                Adres = ariza.Adres,
+                Boylam = ariza.Boylam,
+                Enlem = ariza.Enlem,
+                ID = ariza.ID,
+                MarkaID = ariza.MarkaID,
+                ModelID = ariza.ModelID,
+                OnaylamaTarihi = ariza.OnaylamaTarihi,
+                FotografYollari = ariza.Fotograflari.Select(x => x.Yol).ToList(),
+                Bilgilendirmeleri = new ArizaBilgilendirmeRepo().GetAll().Where(z => z.ArizaID == ariza.ID).Select(y => new ArizaBilgilendirmeViewModel()
+                {
+                    ID = y.ID,
+                    Aciklama = y.Aciklama,
+                    AciklamaZamani = y.AciklamaZamani,
+                    ArizaID = y.ArizaID,
+                    YoneticiID = y.YoneticiID,
+                    OlumluMu = y.OlumluMu
+                }).ToList(),
+                KullaniciID = ariza.KullaniciID,
+                TeknikerID = ariza.TeknikerID,
+                ArizaYapildiMi = ariza.ArizaYapildiMi,
+                OnaylandiMi = ariza.OnaylandiMi
+            };
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ArizaDuzenle(ArizaViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("ArizaYonetimi");
+            }
+            var ariza = new ArizaRepo().GetByID(model.ID);
+            ariza.Aciklama = model.Aciklama;
+            ariza.Adres = model.Adres;
+            ariza.Baslik = model.Baslik;
+            ariza.Boylam = model.Boylam;
+            ariza.Enlem = model.Enlem;
+            ariza.OnaylandiMi = model.OnaylandiMi;
+            ariza.MarkaID = model.MarkaID;
+            ariza.ModelID = model.ModelID;
+            ariza.TeknikerID = model.TeknikerID;
+            new ArizaRepo().Update();
+            return RedirectToAction("ArizaDetay", new { id = ariza.ID });
+        }
 
         #region JsonResults
+        [HttpPost]
+        public JsonResult modelDoldur(int? markaid)
+        {
+            var modeller = new List<SelectListItem>();
+            new PcModelRepo().GetAll().Where(y => y.MarkaID == markaid).OrderBy(x => x.ModelAdi).ToList().ForEach(x =>
+               modeller.Add(new SelectListItem()
+               {
+                   Text = x.ModelAdi,
+                   Value = x.ID.ToString()
+               }));
+            ViewBag.modelleri = modeller;
+            return Json(new
+            {
+                success = true,
+                message = modeller
+            }, JsonRequestBehavior.AllowGet);
+        }
         [HttpPost]
         public JsonResult YeniMarkaAdi(string markaadi)
         {
@@ -260,6 +384,33 @@ namespace Teknik.MVC.Controllers
                 {
                     success = false,
                     message = $"Güncelleme Başarısız:> {ex.Message}"
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        [HttpPost]
+        public JsonResult Resimsil(List<string> values)
+        {
+            try
+            {
+                values.ForEach(path =>
+                {
+                    var yol = path.Substring(1);
+                    var foto = new FotografRepo().GetAll().Where(x => x.Yol == yol).FirstOrDefault();
+                    new FotografRepo().Delete(foto);
+                    System.IO.File.Delete(Server.MapPath(path));
+                });
+                return Json(new
+                {
+                    success = true,
+                    message = "Seçili Resimler Silindi"
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = $"Resim Silme İşleminde Hata Var => {ex.Message}"
                 }, JsonRequestBehavior.AllowGet);
             }
         }
