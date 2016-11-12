@@ -11,8 +11,8 @@ namespace Teknik.BLL.Settings
 {
    public class SiteSettings
     {
-        public static string SiteMail = "crazywissen503@gmail.com";
-        public static string SiteMailPassword = "wissen503";
+        public static string SiteMail = "pctecservicewissen@gmail.com";
+        public static string SiteMailPassword = "dogutunc04";
         public static string SiteMailSmtpHost = "smtp.gmail.com";
         public static int SiteMailSmtpPort = 587;
         public static bool SiteMailEnableSsl = true;

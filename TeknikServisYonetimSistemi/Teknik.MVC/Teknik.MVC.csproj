@@ -795,6 +795,12 @@
     <Content Include="Views\Teknisyen\ArizaYonetimi.cshtml" />
     <Content Include="Views\Shared\_teknisyenmenuPartial.cshtml" />
     <Content Include="Views\Teknisyen\Index.cshtml" />
+    <Content Include="Views\Teknisyen\ArizaDetay.cshtml" />
+    <Content Include="Views\Ariza\ArizaDetay.cshtml" />
+    <Content Include="Views\Ariza\ArizaAnket.cshtml" />
+    <Content Include="Views\Ariza\ArizaYonetimi.cshtml" />
+    <Content Include="Views\Admin\AnketDetay.cshtml" />
+    <Content Include="Views\Admin\AnketYonetimi.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

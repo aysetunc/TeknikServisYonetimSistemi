@@ -20,5 +20,6 @@ namespace Teknik.DAL
         public virtual DbSet<Fotograf> Fotograflar { get; set; }
         public virtual DbSet<PcMarka> Markalar { get; set; }
         public virtual DbSet<PcModel> Modeller { get; set; }
+        public virtual DbSet<Anket> Anketler { get; set; }
     }
 }

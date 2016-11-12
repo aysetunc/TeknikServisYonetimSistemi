@@ -1,0 +1,63 @@
+﻿@model AnketViewModel
+@{
+    ViewBag.Title = "Ariza Anket detay";
+    Layout = "~/Views/Shared/_mainLayout.cshtml";
+}
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<div class="container">
+    <h3 class="text-center">Arıza detay</h3>
+    <div class="col-md-12">
+        @Html.ValidationSummary()
+        @using (Html.BeginForm("AnketDetay", "Admin", FormMethod.Post, new
+        {
+            @class = "form-horizontal",
+            enctype = "multipart/form-data"
+        }))
+        {
+            @Html.HiddenFor(x => x.ID)
+            <div class="form-group">
+                @Html.LabelFor(x => x.Puan, new { @class = "col-sm-2 control-label" })<h3>(1/10)</h3>
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(x => x.Puan, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Aciklama, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.ArizaID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(x => x.ArizaID, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.KullaniciID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(x => x.KullaniciID, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.TeknikerID, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(x => x.TeknikerID, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <a href="@Url.Action("AnketYonetimi","Admin")" class="btn btn-info btn-block" role="button">Anket Listesi</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+
+<script>
+    CKEDITOR.replace("Aciklama", {
+        uiColor: '#fc7f7f'
+    });
+</script>

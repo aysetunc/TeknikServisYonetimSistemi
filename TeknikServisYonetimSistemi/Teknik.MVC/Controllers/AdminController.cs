@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using Teknik.BLL.Account;
 using Teknik.BLL.Repository;
+using Teknik.BLL.Settings;
 using Teknik.Entity.Entities;
 using Teknik.Entity.IdentityModels;
 using Teknik.Entity.ViewModels;
@@ -36,6 +37,7 @@ namespace Teknik.MVC.Controllers
                 PcModelleri = new PcModelRepo().GetAll().Select(x => new PcModelViewModel()
                 {
                     ID = x.ID,
+                    MarkaId = x.MarkaID,
                     ModelAdi = x.ModelAdi
                 }).ToList(),
                 Kullanicilar = kullanicilar.Select(x => new KullaniciViewModel()
@@ -82,7 +84,10 @@ namespace Teknik.MVC.Controllers
                 TeknikerID = x.TeknikerID,
                 FotografYollari = (x.Fotograflari.Count > 0 ? x.Fotograflari.Select(y => y.Yol).ToList() : new List<string>()),
                 ID = x.ID,
-                OnaylamaTarihi = x.OnaylamaTarihi
+                OnaylamaTarihi = x.OnaylamaTarihi,
+                ArizaYapildiMi = x.ArizaYapildiMi,
+                OnaylandiMi = x.OnaylandiMi,
+                EklemeTarihi = x.EklemeTarihi
             }).ToList();
             return View(arizalar);
         }
@@ -105,6 +110,14 @@ namespace Teknik.MVC.Controllers
 
             var userManager = MembershipTools.NewUserManager();
             List<ApplicationUser> kullanicilar = userManager.Users.ToList();
+            var BosTeknisyenIdleri = new ArizaRepo().GetAll();
+            foreach (var item in BosTeknisyenIdleri)
+            {
+                if (!item.ArizaYapildiMi)
+                {
+                    kullanicilar.Remove(userManager.FindById(item.TeknikerID));
+                }
+            }
             var Kullanicilar = kullanicilar.Select(x => new KullaniciViewModel()
             {
                 ID = x.Id,
@@ -156,25 +169,95 @@ namespace Teknik.MVC.Controllers
         }
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult ArizaDuzenle(ArizaViewModel model)
+        public async Task<ActionResult> ArizaDuzenle(ArizaViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return RedirectToAction("ArizaYonetimi");
             }
             var ariza = new ArizaRepo().GetByID(model.ID);
+
             ariza.Aciklama = model.Aciklama;
             ariza.Adres = model.Adres;
             ariza.Baslik = model.Baslik;
             ariza.Boylam = model.Boylam;
             ariza.Enlem = model.Enlem;
-            ariza.OnaylandiMi = model.OnaylandiMi;
             ariza.MarkaID = model.MarkaID;
             ariza.ModelID = model.ModelID;
             ariza.TeknikerID = model.TeknikerID;
+            if (ariza.TeknikerID != null)
+            {
+                #region Kullanıcı Bilgilendirme
+
+                var userManager = MembershipTools.NewUserManager();
+                var Teknisyen = userManager.FindById(ariza.TeknikerID);
+
+
+                string SiteUrl = Request.Url.Scheme + System.Uri.SchemeDelimiter + Request.Url.Host +
+(Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port);
+
+                if (ariza.OnaylandiMi == true && model.OnaylandiMi == false)
+                {
+                    await SiteSettings.SendMail(new MailModel()
+                    {
+                        Message = $"Merhaba {Teknisyen.Name}<br/><strong>'{ariza.ID}'</strong> nolu Arıza sistemden kaldırılmıştır. Yapacağınız işlemleri durdurmanız rica olunur.<br/>",
+                        Subject = "Arıza Sistemden kaldırıldı",
+                        To = Teknisyen.Email
+                    });
+                }
+                else if (ariza.OnaylandiMi == false && model.OnaylandiMi == true)
+                {
+                    ariza.OnaylamaTarihi = DateTime.Now;
+                    await SiteSettings.SendMail(new MailModel()
+                    {
+                        Message = $"Merhaba {Teknisyen.Name}<br/><strong>'{ariza.ID}'</strong> nolu arıza sisteme alınmıştır<br/><a href='{SiteUrl}/Teknisyen/ArizaDetay/{ariza.ID}'>Arızayı görmek için tıklayınız</a>",
+                        Subject = "Arızanız sisteme alındı!",
+                        To = Teknisyen.Email
+                    });
+                }
+                #endregion
+
+            }
+            ariza.OnaylandiMi = model.OnaylandiMi;
             new ArizaRepo().Update();
             return RedirectToAction("ArizaDetay", new { id = ariza.ID });
         }
+        public ActionResult AnketDetay(int? id)
+        {
+            if (id == null)
+                return RedirectToAction("AnketYonetimi");
+            var anket = new AnketRepo().GetByID(id.Value);
+            if (anket == null)
+                return RedirectToAction("AnketYonetimi");
+            var userManager = MembershipTools.NewUserManager();
+            var Kullanici = userManager.FindById(anket.KullaniciID);
+            var Teknisyen = userManager.FindById(anket.TeknikerID);
+            var model = new AnketViewModel()
+            {
+                ID = anket.ID,
+                Aciklama = anket.Aciklama,
+                ArizaID = anket.ArizaID,
+                KullaniciID = Kullanici.Name,
+                Puan = anket.Puan,
+                TeknikerID = Teknisyen.Name
+            };
+            return View(model);
+        }
+        public ActionResult AnketYonetimi()
+        {
+            List<AnketViewModel> Anketler = new AnketRepo().GetAll().OrderByDescending(y => y.ID).Select(x => new AnketViewModel()
+            {
+                ID = x.ID,
+                TeknikerID = x.TeknikerID,
+                Aciklama = x.Aciklama,
+                ArizaID = x.ArizaID,
+                KullaniciID = x.KullaniciID,
+                Puan = x.Puan
+
+            }).ToList();
+            return View(Anketler);
+        }
+
 
         #region JsonResults
         [HttpPost]
@@ -192,6 +275,16 @@ namespace Teknik.MVC.Controllers
             {
                 success = true,
                 message = modeller
+            }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult modelDoldurSetting(int? markaid)
+        {
+            ViewBag.SecilenMarkaID = markaid;
+            return Json(new
+            {
+                success = true,
+                message = markaid
             }, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]

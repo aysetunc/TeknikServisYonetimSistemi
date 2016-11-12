@@ -67,10 +67,10 @@
                     </thead>
                     <tbody>
                         @{ int sayac1 = 0;
-                            foreach (var item in Model.PcModelleri)
-                            {
-                                sayac1++;
-                                <tr>
+                                foreach (var item in Model.PcModelleri.Where(x=>x.MarkaId==ViewBag.SecilenMarkaID))
+                                {
+                                    sayac1++;
+                                <tr id="ModelID">
                                     <td>@sayac1</td>
                                     <td>@item.ModelAdi </td>
                                     <td>
@@ -136,6 +136,34 @@
 </div>
 <script src="~/Scripts/jquery-3.1.1.js"></script>
 <script>
+    $(".changemarka").change(function () {
+        modelleriYuklee();
+        console.log("secildi");
+    });
+    function modelleriYuklee() {
+        var markaid = $(".changemarka option:selected").val();
+        $.ajax({
+            url: '@Url.Action("modelDoldurSetting", "Admin")/markaid=' + markaid,
+            type: "POST",
+            success: function (data) {
+                if (data.success == true) {
+                    //console.log(data.message);
+                    $("#ModelID").find('option').remove();
+                    var modeller = data.message;
+                    $.each(modeller, function (key, value) {
+
+                        //console.log(value);
+                        var option = document.createElement("option");
+                        //<option value="2">Casper</option>
+                        $(option).attr("value", value.Value).text(value.Text).appendTo($("#ModelID"));
+                    })
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    };
     $("#btnpcModelekle").click(function () {
         var markaid = $(".changemarka option:selected").val();
         var markaadi = $(".changemarka option:selected").text();

@@ -12,4 +12,5 @@ namespace Teknik.BLL.Repository
     public class FotografRepo : RepositoryBase<Fotograf, int> { }
     public class PcMarkaRepo : RepositoryBase<PcMarka, int> { }
     public class PcModelRepo : RepositoryBase<PcModel, int> { }
+    public class AnketRepo : RepositoryBase<Anket, int> { }
 }

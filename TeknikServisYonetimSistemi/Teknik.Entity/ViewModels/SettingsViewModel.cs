@@ -28,6 +28,7 @@ namespace Teknik.Entity.ViewModels
     public class PcModelViewModel
     {
         public int ID { get; set; }
+        public int MarkaId { get; set; }
         [Required]
         [Display(Name = "Model Adı")]
         public string ModelAdi { get; set; }
